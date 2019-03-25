@@ -12,10 +12,7 @@ public class Main {
         Dictionary dictionary = createDictionaryHashMap();
         String userInput = getUserInput();
         dictionary.define(userInput);
-
     }
-
-
 
     private static Dictionary createDictionaryHashMap() {
         Dictionary dictionary = new Dictionary();
@@ -24,7 +21,7 @@ public class Main {
             BufferedReader br = new BufferedReader(new FileReader(INPUT_FILE));
             String line;
             while ((line = br.readLine()) != null) {
-                dictionary.put(line.substring(0, line.indexOf(";")), line.substring(line.indexOf(";") + 1));
+                dictionary.put(line.substring(0, line.indexOf(";")), line.substring(line.indexOf(";") + 2));
             }
             br.close();
         } catch (IOException e) {
@@ -37,11 +34,12 @@ public class Main {
         System.out.println("Enter word to define...");
         String userInput = "";
         Scanner scanner = new Scanner(System.in);
-        if(scanner.hasNextLine()){
+        if (scanner.hasNextLine()) {
             userInput = scanner.nextLine();
         } else {
             System.out.println("Invalid input");
         }
+        scanner.close();
         return userInput.toUpperCase();
     }
 
