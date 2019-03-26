@@ -12,6 +12,7 @@ public class Main {
         Dictionary dictionary = createDictionaryHashMap();
         String userInput = getUserInput();
         dictionary.define(userInput);
+
     }
 
     private static Dictionary createDictionaryHashMap() {
