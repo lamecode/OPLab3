@@ -12,12 +12,10 @@ public class Main {
         Dictionary dictionary = createDictionaryHashMap();
         String userInput = getUserInput();
         dictionary.define(userInput);
-
     }
 
     private static Dictionary createDictionaryHashMap() {
         Dictionary dictionary = new Dictionary();
-
         try {
             BufferedReader br = new BufferedReader(new FileReader(INPUT_FILE));
             String line;
@@ -32,7 +30,7 @@ public class Main {
     }
 
     private static String getUserInput() {
-        System.out.println("Enter word to define...");
+        System.out.println("Enter text to define...");
         String userInput = "";
         Scanner scanner = new Scanner(System.in);
         if (scanner.hasNextLine()) {
