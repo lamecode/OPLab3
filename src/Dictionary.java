@@ -10,25 +10,4 @@ public class Dictionary extends HAshTable {
             }
         }
     }
-
-
-
-/*
-    @Override
-    public String toString() { //view only the keys
-        String toStr = "{\n";
-        for (int i = 0; i < CAPACITY; i++) {
-            String list = "(" + table[i].key;
-            Node last = table[i];
-            while (last.next != null) {
-                last = last.next;
-                list += " |-> " + last.key;
-            }
-            list += ")";
-            toStr += list + "\n";
-        }
-        toStr += "}";
-        return toStr;
-    }
-*/
 }
