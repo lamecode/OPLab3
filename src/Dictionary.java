@@ -1,18 +1,14 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.Scanner;
+import java.util.HashMap;
 
-public class Dictionary {
-    private static final String INPUT_FILE = "dict_processed.txt";
-
-    public static void main(String[] args) {
-        try {
-            BufferedReader brand_new = new BufferedReader(new FileReader(INPUT_FILE));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+public class Dictionary extends HashMap<String, String> {
+    public void AddDefinition(String sentence) {
+        String[] words = sentence.split(" ");
+        for (int i = 0; i < words.length; i++) {
+            if (get(words[i]) == null) {
+                System.out.println(words[i] + ": not found" + "\n");
+            } else {
+                System.out.println(get(words[i]) + "\n");
+            }
         }
-        Scanner Lab = new Scanner(System.in);
-        String word = Lab.nextLine();
     }
 }
