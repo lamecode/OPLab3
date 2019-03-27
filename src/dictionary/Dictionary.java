@@ -32,16 +32,14 @@ public class Dictionary {
     }
 
     public void put(String key, String value) {
-        int keyHash = key.hashCode();
-        Node p = new Node(keyHash, key, value, null);
+        Node p = new Node(hash(key), key, value, null);
         if (table == null) {
             table = new Node[CAPACITY];
         }
-        int index = keyHash & (CAPACITY - 1);
-        if (table[index] == null) {
-            table[index] = p;
+        if (table[p.hash] == null) {
+            table[p.hash] = p;
         } else {
-            Node last = table[index];
+            Node last = table[p.hash];
             while (last.next != null) {
                 last = last.next;
             }
@@ -50,12 +48,10 @@ public class Dictionary {
     }
 
     public String get(String key) {
-        int keyHash = key.hashCode();
-        int index = keyHash & (CAPACITY - 1);
-        if (table[index].key.equals(key)) {
-            return table[index].value;
+        if (table[hash(key)].key.equals(key)) {
+            return table[hash(key)].value;
         } else {
-            Node scannedNode = table[index].next;
+            Node scannedNode = table[hash(key)].next;
             while (!scannedNode.key.equals(key)) {
                 if (scannedNode.next == null) {
                     return null;
@@ -66,6 +62,11 @@ public class Dictionary {
         }
     }
 
+    private int hash(String key) {
+        int hash = key.hashCode() & (CAPACITY - 1);
+        return hash;
+    }
+    
 /*
     @Override
     public String toString() { //view only the keys
